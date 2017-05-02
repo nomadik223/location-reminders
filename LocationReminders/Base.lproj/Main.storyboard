@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q0U-6O-l2c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,29 +11,61 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="qlT-pt-nFp">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="q0U-6O-l2c" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="MFn-45-h6X"/>
+                        <viewControllerLayoutGuide type="bottom" id="5PD-N0-CD9"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="edH-dD-9Jf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="U1c-LS-YEF">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I8m-pq-XRE">
+                                <rect key="frame" x="56.5" y="99.5" width="262.5" height="467"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPP-Ok-Tdo">
+                                <rect key="frame" x="77" y="574" width="65" height="30"/>
+                                <state key="normal" title="Location1"/>
+                                <connections>
+                                    <action selector="location1Pressed:" destination="q0U-6O-l2c" eventType="touchUpInside" id="2fZ-nc-bjA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTg-Gy-YJu">
+                                <rect key="frame" x="153" y="574" width="68" height="30"/>
+                                <state key="normal" title="Location2"/>
+                                <connections>
+                                    <action selector="location2Pressed:" destination="q0U-6O-l2c" eventType="touchUpInside" id="7b6-Yf-yiL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzh-dl-o0c">
+                                <rect key="frame" x="231.5" y="574" width="68" height="30"/>
+                                <state key="normal" title="Location3"/>
+                                <connections>
+                                    <action selector="location3Pressed:" destination="q0U-6O-l2c" eventType="touchUpInside" id="JwC-jn-ftU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="U1c-LS-YEF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="7BF-Rp-9pc"/>
-                            <constraint firstItem="U1c-LS-YEF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="j2I-M0-WSG"/>
+                            <constraint firstItem="FTg-Gy-YJu" firstAttribute="top" secondItem="I8m-pq-XRE" secondAttribute="bottom" constant="8" id="1qX-JF-nIT"/>
+                            <constraint firstItem="I8m-pq-XRE" firstAttribute="centerX" secondItem="edH-dD-9Jf" secondAttribute="centerX" id="5l1-KU-xta"/>
+                            <constraint firstItem="FTg-Gy-YJu" firstAttribute="centerX" secondItem="edH-dD-9Jf" secondAttribute="centerX" id="K8G-Zr-UkO"/>
+                            <constraint firstItem="mPP-Ok-Tdo" firstAttribute="centerX" secondItem="edH-dD-9Jf" secondAttribute="centerX" constant="-78" id="P5N-V5-HeV"/>
+                            <constraint firstItem="mPP-Ok-Tdo" firstAttribute="top" secondItem="I8m-pq-XRE" secondAttribute="bottom" constant="8" id="PEU-2E-i9t"/>
+                            <constraint firstItem="Jzh-dl-o0c" firstAttribute="top" secondItem="I8m-pq-XRE" secondAttribute="bottom" constant="8" id="kyR-sh-nAx"/>
+                            <constraint firstItem="I8m-pq-XRE" firstAttribute="centerY" secondItem="edH-dD-9Jf" secondAttribute="centerY" id="m5l-2M-GsT"/>
+                            <constraint firstItem="Jzh-dl-o0c" firstAttribute="centerX" secondItem="edH-dD-9Jf" secondAttribute="centerX" constant="78" id="udy-9S-9Yh"/>
+                            <constraint firstItem="I8m-pq-XRE" firstAttribute="width" secondItem="edH-dD-9Jf" secondAttribute="width" multiplier="0.7" id="wm6-CZ-qf5"/>
+                            <constraint firstItem="I8m-pq-XRE" firstAttribute="height" secondItem="edH-dD-9Jf" secondAttribute="height" multiplier="0.7" id="wzn-K3-WNO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="I8m-pq-XRE" id="bMI-Ve-Yrf"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqF-sP-7dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
