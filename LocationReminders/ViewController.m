@@ -35,7 +35,7 @@
 
 - (IBAction)location1Pressed:(id)sender {
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566674, -122.351096);
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(33.434895, -111.716919);
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 400.0, 400.0);
     
     [self.mapView setRegion:region animated:YES];
@@ -43,7 +43,7 @@
 }
 - (IBAction)location2Pressed:(id)sender {
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(48.025609, -122.142059);
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(64.597969, -17.176180);
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 400.0, 400.0);
     
     [self.mapView setRegion:region animated:YES];
