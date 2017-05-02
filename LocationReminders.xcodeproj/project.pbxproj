@@ -13,7 +13,26 @@
 		C8062F8F1EB7ABFF0079EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8062F8D1EB7ABFF0079EB7E /* Main.storyboard */; };
 		C8062F911EB7ABFF0079EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8062F901EB7ABFF0079EB7E /* Assets.xcassets */; };
 		C8062F941EB7ABFF0079EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8062F921EB7ABFF0079EB7E /* LaunchScreen.storyboard */; };
+		C8062F9E1EB7B2D60079EB7E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8062F9C1EB7B2D60079EB7E /* Bolts.framework */; };
+		C8062F9F1EB7B2D60079EB7E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8062F9D1EB7B2D60079EB7E /* Parse.framework */; };
+		C8062FA11EB7B3090079EB7E /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C8062F9D1EB7B2D60079EB7E /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8062FA21EB7B30E0079EB7E /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C8062F9C1EB7B2D60079EB7E /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8062FA41EB7C0C30079EB7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8062FA31EB7C0C30079EB7E /* MapKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8062FA01EB7B2F10079EB7E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8062FA21EB7B30E0079EB7E /* Bolts.framework in CopyFiles */,
+				C8062FA11EB7B3090079EB7E /* Parse.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C8062F811EB7ABFF0079EB7E /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +45,9 @@
 		C8062F901EB7ABFF0079EB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8062F931EB7ABFF0079EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8062F951EB7ABFF0079EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8062F9C1EB7B2D60079EB7E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		C8062F9D1EB7B2D60079EB7E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		C8062FA31EB7C0C30079EB7E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8062F9E1EB7B2D60079EB7E /* Bolts.framework in Frameworks */,
+				C8062FA41EB7C0C30079EB7E /* MapKit.framework in Frameworks */,
+				C8062F9F1EB7B2D60079EB7E /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +69,7 @@
 			children = (
 				C8062F831EB7ABFF0079EB7E /* LocationReminders */,
 				C8062F821EB7ABFF0079EB7E /* Products */,
+				C8062F9B1EB7B2D50079EB7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +105,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C8062F9B1EB7B2D50079EB7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8062FA31EB7C0C30079EB7E /* MapKit.framework */,
+				C8062F9C1EB7B2D60079EB7E /* Bolts.framework */,
+				C8062F9D1EB7B2D60079EB7E /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,6 +125,7 @@
 				C8062F7D1EB7ABFF0079EB7E /* Sources */,
 				C8062F7E1EB7ABFF0079EB7E /* Frameworks */,
 				C8062F7F1EB7ABFF0079EB7E /* Resources */,
+				C8062FA01EB7B2F10079EB7E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -112,6 +149,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 8EL2FG2Q62;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -276,6 +318,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8EL2FG2Q62;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AustinRogers.LocationReminders;
@@ -288,6 +334,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8EL2FG2Q62;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AustinRogers.LocationReminders;
