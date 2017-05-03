@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -107,22 +108,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Radius" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-d7-Wic">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Radius" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-d7-Wic">
                                 <rect key="frame" x="111" y="318" width="152" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="URg-df-kqh"/>
+                                    <constraint firstAttribute="height" constant="30" id="e8V-WY-roc"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-fv-ycc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-fv-ycc">
                                 <rect key="frame" x="111" y="148" width="152" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bry-v4-o8h"/>
+                                    <constraint firstAttribute="width" constant="152" id="wJp-uw-qHY"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.90743159844258159" blue="0.65755306623146725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pYS-fv-ycc" firstAttribute="leading" secondItem="mKn-ck-LdZ" secondAttribute="leadingMargin" constant="95" id="8mJ-KC-nOe"/>
+                            <constraint firstItem="yxn-d7-Wic" firstAttribute="top" secondItem="pYS-fv-ycc" secondAttribute="bottom" constant="140" id="GnH-sT-oGT"/>
+                            <constraint firstItem="yxn-d7-Wic" firstAttribute="leading" secondItem="mKn-ck-LdZ" secondAttribute="leadingMargin" constant="95" id="X00-Vi-dhf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yxn-d7-Wic" secondAttribute="trailing" constant="96" id="cYX-6c-RD1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pYS-fv-ycc" secondAttribute="trailing" constant="96" id="i8e-Oa-ofN"/>
+                            <constraint firstItem="pYS-fv-ycc" firstAttribute="top" secondItem="GYO-8d-cOR" secondAttribute="bottom" constant="84" id="oVJ-Xw-l4D"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="reminderName" destination="pYS-fv-ycc" id="8Sv-uZ-3GM"/>
