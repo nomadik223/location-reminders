@@ -20,6 +20,8 @@
 		C8062FA41EB7C0C30079EB7E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8062FA31EB7C0C30079EB7E /* MapKit.framework */; };
 		C84884FF1EB8FF1D001E319D /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84884FE1EB8FF1D001E319D /* AddReminderViewController.m */; };
 		C84885051EB942B6001E319D /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84885041EB942B6001E319D /* LocationController.m */; };
+		C848850A1EBA466D001E319D /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = C84885091EBA466D001E319D /* Reminder.m */; };
+		C848850C1EBA5E6D001E319D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C848850B1EBA5E6D001E319D /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +57,9 @@
 		C84885031EB942B6001E319D /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
 		C84885041EB942B6001E319D /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
 		C84885071EB94336001E319D /* LocationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationControllerDelegate.h; sourceTree = "<group>"; };
+		C84885081EBA466D001E319D /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		C84885091EBA466D001E319D /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		C848850B1EBA5E6D001E319D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 			files = (
 				C8062F9E1EB7B2D60079EB7E /* Bolts.framework in Frameworks */,
 				C8062FA41EB7C0C30079EB7E /* MapKit.framework in Frameworks */,
+				C848850C1EBA5E6D001E319D /* ParseUI.framework in Frameworks */,
 				C8062F9F1EB7B2D60079EB7E /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +118,7 @@
 		C8062F9B1EB7B2D50079EB7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C848850B1EBA5E6D001E319D /* ParseUI.framework */,
 				C8062FA31EB7C0C30079EB7E /* MapKit.framework */,
 				C8062F9C1EB7B2D60079EB7E /* Bolts.framework */,
 				C8062F9D1EB7B2D60079EB7E /* Parse.framework */,
@@ -142,6 +149,8 @@
 		C84885021EB94260001E319D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C84885081EBA466D001E319D /* Reminder.h */,
+				C84885091EBA466D001E319D /* Reminder.m */,
 				C8062F871EB7ABFF0079EB7E /* AppDelegate.h */,
 				C8062F881EB7ABFF0079EB7E /* AppDelegate.m */,
 				C84885031EB942B6001E319D /* LocationController.h */,
@@ -230,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C84885051EB942B6001E319D /* LocationController.m in Sources */,
+				C848850A1EBA466D001E319D /* Reminder.m in Sources */,
 				C84884FF1EB8FF1D001E319D /* AddReminderViewController.m in Sources */,
 				C8062F8C1EB7ABFF0079EB7E /* ViewController.m in Sources */,
 				C8062F891EB7ABFF0079EB7E /* AppDelegate.m in Sources */,
@@ -359,6 +369,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -375,6 +386,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
