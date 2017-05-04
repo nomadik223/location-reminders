@@ -23,35 +23,43 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self prepareNavigationBarDoneButton];
+    
+}
+
+- (void)prepareNavigationBarDoneButton{
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(popViewControllerAnimated:)];
+    
+    [[self navigationItem] setRightBarButtonItem:doneButton];
+}
+
+- (void)doneButtonPressed{
     Reminder *newReminder = [Reminder object];
     
     newReminder.name = self.annotationTitle;
     newReminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
     
     [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        NSLog(@"Annotation Title: %@", self.annotationTitle);
-        NSLog(@"Coordinates: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
         
-        NSLog(@"Save Reminder Successful:%i - Error: %@", succeeded, error.localizedDescription);
+        NSLog(@"Annotation title: %@", self.annotationTitle);
+        NSLog(@"Coordinates:  %f, %f", self.coordinate.latitude, self.coordinate.longitude);
         
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"ReminderSavedToParse" object:nil];
+        NSLog(@"Save Reminder successful: %i - Error: %@", succeeded, error.localizedDescription);
         
-        if (self.completion) {
-            
-            CGFloat radius = 100; //For lab: Coming from the input field
-            
-            MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
-            
-            self.completion(circle);
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        };
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReminderSavedToParse" object:nil];
         
     }];
     
-    NSLog(@"Annotation title: %@", self.annotationTitle);
-    NSLog(@"Coordinates:  %f, %f", self.coordinate.latitude, self.coordinate.longitude);
+    if (self.completion) {
+        
+        CGFloat radius = 100; //for lab coming from UISlider/UITextField from the user
+        
+        MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
+        
+        self.completion(circle);
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
 }
 

@@ -15,7 +15,7 @@
 @import Parse;
 @import MapKit;
 
-@import ParseUI;
+#import <ParseUI/ParseUI.h>
 
 @interface ViewController () <MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
@@ -34,30 +34,46 @@
     LocationController *locationController = [LocationController sharedLocationController];
     locationController.delegate = self;
     
+    PFObject *newReminder = [PFObject objectWithClassName:@"Reminder"];
+    
+    newReminder[@"title"] = @"some string";
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reminderSavedToParse:) name:@"ReminderSavedToParse" object:nil];
     
     [PFUser logOut];
     
     if (![PFUser currentUser]) {
+        
         PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
         
         loginViewController.delegate = self;
         
         loginViewController.signUpController.delegate = self;
         
-        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword;
+        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsFacebook;
+        
+        loginViewController.logInView.logo = [[UIView alloc]init];
+        
+        loginViewController.logInView.backgroundColor = [UIColor greenColor];
         
         [self presentViewController:loginViewController animated:YES completion:nil];
         
     }
     
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error Fetching Reminder %@", error.localizedDescription);
+        } else {
+            NSLog(@"%@", objects);
+        }
+    }];
+    
 }
 
 -(void)reminderSavedToParse:(id)sender{
-    NSLog(@"DO STUFF SINCE OUR NEW REMINDER WAS SAVED. EXPLOOOOOOOSIOOOOOONS -Mr. Torgue, probably");
+    NSLog(@"Do some stuff since our new reminder was saved!");
 }
-
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -89,7 +105,7 @@
 }
 
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ReminderSavedToParse" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ReminderSavedToParse" object:nil];
 }
 
 - (IBAction)location1Pressed:(id)sender {
@@ -123,7 +139,8 @@
         
         CGPoint touchPoint = [sender locationInView:self.mapView];
         
-        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint
+                                                  toCoordinateFromView:self.mapView];
         
         MKPointAnnotation *newPoint = [[MKPointAnnotation alloc]init];
         
@@ -135,7 +152,6 @@
     }
     
 }
-
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
@@ -169,16 +185,14 @@
     
 }
 
--(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-    
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc]initWithCircle:overlay];
     
     renderer.strokeColor = [UIColor blueColor];
-    renderer.fillColor = [UIColor whiteColor];
-    renderer.alpha = 0.2;
+    renderer.fillColor = [UIColor redColor];
+    renderer.alpha = 0.25;
     
     return renderer;
-    
 }
 
 -(void)locationControllerUpdatedLocation:(CLLocation *)location{
@@ -189,11 +203,11 @@
     
 }
 
--(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
