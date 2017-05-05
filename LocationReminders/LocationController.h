@@ -20,7 +20,7 @@
 
 + (id)sharedLocationController;
 
--(void)startMonitoringForRegion:(CLRegion *)region;
+- (void)startMonitoringForRegion:(CLRegion *)region;
 
 @end
 

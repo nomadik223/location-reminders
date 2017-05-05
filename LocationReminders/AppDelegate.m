@@ -24,11 +24,10 @@
     [self registerForNotifications];
     
     ParseClientConfiguration *parseConfig = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> _Nonnull configuration) {
-        configuration.applicationId = @"hqwfer56tjkuyjtyfngbdfew45";
-        configuration.clientKey = @"q238789dkjf87";
+        configuration.applicationId = @"294uhfsgdasvo9732";
+        configuration.clientKey = @"asdg927fhvz623tjv97fs942hnvs6";
         
-        configuration.server = @"https://ar-location-reminders-server.herokuapp.com/parse";
-        
+        configuration.server = @"https://brl-location-reminders-server.herokuapp.com/parse";
     }];
     
     [Parse initializeWithConfiguration:parseConfig];
@@ -36,17 +35,20 @@
     return YES;
 }
 
--(void)registerForNotifications{
+- (void)registerForNotifications{
     UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
     
     UNUserNotificationCenter *current = [UNUserNotificationCenter currentNotificationCenter];
     
     [current requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"Error %@", error.localizedDescription);
+            NSLog(@"There was an error: %@", error.localizedDescription);
         }
+        
         if (granted) {
-            NSLog(@"User has allowed stuff to happen for notifications");
+            NSLog(@"The user has allowed permissions for notifications.");
+        } else if (granted == NO) {
+            NSLog(@"User opted out of notifications.");
         }
     }];
 }

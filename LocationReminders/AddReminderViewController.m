@@ -7,7 +7,7 @@
 //
 
 #import "AddReminderViewController.h"
-
+#import "LocationController.h"
 #import "Reminder.h"
 
 @interface AddReminderViewController ()
@@ -28,7 +28,7 @@
 }
 
 - (void)prepareNavigationBarDoneButton{
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(popViewControllerAnimated:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed)];
     
     [[self navigationItem] setRightBarButtonItem:doneButton];
 }
@@ -36,8 +36,9 @@
 - (void)doneButtonPressed{
     Reminder *newReminder = [Reminder object];
     
-    newReminder.name = self.annotationTitle;
+    newReminder.name = self.reminderName.text;
     newReminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    newReminder.radius = [self numberFromString:self.reminderRadius.text];
     
     [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
@@ -52,14 +53,16 @@
     
     if (self.completion) {
         
-        CGFloat radius = 100; //for lab coming from UISlider/UITextField from the user
+        CGFloat radius = [self.reminderRadius.text floatValue]; //for lab coming from UISlider/UITextField from the user
         
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
         
         if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+            
             CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:self.coordinate radius:radius identifier:newReminder.name];
             
-           // [LocationController.shared startMonitoringForRegion];
+            [LocationController.sharedLocationController startMonitoringForRegion:region];
+            
         }
         
         self.completion(circle);
@@ -67,6 +70,12 @@
         
     }
     
+}
+
+-(NSNumber *)numberFromString:(NSString *)string {
+    NSNumberFormatter *formatString = [[NSNumberFormatter alloc]init];
+    [formatString setNumberStyle:NSNumberFormatterDecimalStyle];
+    return  [formatString numberFromString:string];
 }
 
 - (void)didReceiveMemoryWarning {
