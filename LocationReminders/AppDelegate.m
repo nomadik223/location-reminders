@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @import Parse;
+@import UserNotifications;
 
 @interface AppDelegate ()
 
@@ -20,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+    [self registerForNotifications];
     
     ParseClientConfiguration *parseConfig = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> _Nonnull configuration) {
         configuration.applicationId = @"hqwfer56tjkuyjtyfngbdfew45";
@@ -33,6 +34,21 @@
     [Parse initializeWithConfiguration:parseConfig];
     
     return YES;
+}
+
+-(void)registerForNotifications{
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound;
+    
+    UNUserNotificationCenter *current = [UNUserNotificationCenter currentNotificationCenter];
+    
+    [current requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error %@", error.localizedDescription);
+        }
+        if (granted) {
+            NSLog(@"User has allowed stuff to happen for notifications");
+        }
+    }];
 }
 
 

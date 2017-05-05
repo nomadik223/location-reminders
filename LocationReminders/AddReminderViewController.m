@@ -56,6 +56,12 @@
         
         MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
         
+        if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+            CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:self.coordinate radius:radius identifier:newReminder.name];
+            
+           // [LocationController.shared startMonitoringForRegion];
+        }
+        
         self.completion(circle);
         [self.navigationController popViewControllerAnimated:YES];
         
